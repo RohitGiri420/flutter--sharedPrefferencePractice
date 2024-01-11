@@ -19,7 +19,9 @@ class UiHelper{
   }
 
   static customButton(VoidCallback onPressed,String text){
-    return ElevatedButton(onPressed: onPressed, child: Text("$text"));
+    return ElevatedButton(onPressed: (){
+      onPressed();
+    }, child: Text("$text"));
 
   }
 

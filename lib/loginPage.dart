@@ -10,7 +10,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String UserName = "empty";
+  String? UserName ;
   String? Password;
 
   @override
@@ -58,23 +58,27 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   setdata() async {
-    final SharedPreferences preffs = await SharedPreferences.getInstance();
+    var preffs = await SharedPreferences.getInstance();
     UserName = emailController.text.toString();
     Password = passwordController.text.toString();
 
-    preffs.setString("email", UserName);
+    preffs.setString("email", UserName!);
     preffs.setString("pass", Password!);
 
 
   }
 
   getdata() async {
-    final SharedPreferences preffs = await SharedPreferences.getInstance();
+    var preffs = await SharedPreferences.getInstance();
 
     String? temp = preffs.getString("email");
     String? temp1 = preffs.getString("pass");
 
     UserName = temp!;
     Password = temp1!;
+
+    setState(() {
+
+    });
   }
 }
